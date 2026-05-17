@@ -7,15 +7,15 @@ import (
 )
 
 type CreateUserRequest struct {
-	FullName    string  // json:"ful_name"
-	PhoneNumber *string // json:"phone_number"
+	FullName    string  `json:"full_name"`
+	PhoneNumber *string `json:"phone_number"`
 }
 
 type CreateUserResponse struct {
-	ID          int     // json:"id"
-	Version     int     //json:"version"
-	FullName    string  //json:"full_name"
-	PhoneNumber *string //json:"phone_number"
+	ID          int     `json:"id"`
+	Version     int     `json:"version"`
+	FullName    string  `json:"full_name"`
+	PhoneNumber *string `json:"phone_number"`
 }
 
 func (h *UserHTTPHandler) CreateUser(rw http.ResponseWriter, r *http.Request) {
