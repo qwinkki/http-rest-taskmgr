@@ -16,11 +16,17 @@ type Server struct {
 	log    *core_logger.Logger
 }
 
-func NewHTTPServer(config Config, log *core_logger.Logger) *Server {
+func NewServer(config Config, log *core_logger.Logger) *Server {
 	return &Server{
 		mux:    http.NewServeMux(),
 		config: config,
 		log:    log,
+	}
+}
+
+func (s *Server) RegisterRoutes(routers ...*APIVersionRouter) {
+	for _, router := range routers {
+		s.mux.Handle("/api/"+string(router.apiVersion)+"/", router.ServeMux)
 	}
 }
 
