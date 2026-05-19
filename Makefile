@@ -54,4 +54,6 @@ migrate-action:
 		"$(action)"
 
 app-run:
-	@go run src/main.go
+	@export FOLDER="$(PROJECT_ROOT)/out/logs" && \
+	go mod tidy && \
+	go run cmd/app/main.go \
